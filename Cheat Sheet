@@ -115,3 +115,105 @@ Delete all cookies: driver.manage().deleteAllCookies();
 Using sendKeys() for file uploads:
 WebElement uploadElement = driver.findElement(By.id("upload"));
 uploadElement.sendKeys("C:\\path\\to\\file.txt");
+
+//●click login button
+static By loginbutton=By.cssSelector("#login-button");
+driver.findElement(loginbutton).click();
+
+//●click and write 
+ By usernamebox=By.cssSelector("#user-name");
+ driver.findElement(usernamebox).click();
+        elementHelper.sendKey(usernamebox,"abcdefg"); ya da driver.findElement(usernamebox).sendKeys("abcdefg");
+
+
+//●to see the error message
+By errorMessage=By.cssSelector("h3[data-test='error']");
+ elementHelper.checkVisible(errorMessage);
+
+//●to check the "word"
+static By Invalidmessage=By.cssSelector(".oxd-text.oxd-text--p.oxd-alert-content-text");
+
+        WebElement errormessage = driver.findElement(Invalidmessage);
+        errormessageText = errormessage.getText();
+        assertEquals(errormessage, "Invalid credentials\n");
+
+ //●to check the "word"
+driver.findElement(myinfobutton).click();
+        WebElement newname=driver.findElement(newnametitle);
+        String newnametext=newname.getText();
+        assertEquals(newnametext,"a ak");
+
+
+//●scroll page down
+JavascriptExecutor js=(JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,350)");
+
+//●select and delete words in the box
+WebElement firstname = driver.findElement(By.cssSelector("input[placeholder='First Name']"));
+        firstname.sendKeys(Keys.CONTROL + "a");
+        firstname.sendKeys(Keys.DELETE);
+
+
+
+//●to check the product if it is true
+static By check=By.cssSelector("span[class='a-']");
+public static void checkcart() {
+            elementHelper.checkVisible(check);
+    }
+
+   //●find an element
+WebElement element = driver.findElement(By.id("elementId"));
+
+   //● Click the "click here" button 
+        driver.findElement(By.linkText("Click Here")).click();
+
+ String ikinciSayfaWhd = "";
+        Set<String> whdSeti = driver.getWindowHandles();
+
+   //●web ikinci sayfaya yönlendirirse;           
+          
+
+            ikinci sayfa acildiktan sonra
+            driver.getWindowHandle() ==>  ilk sayfanin handle degerini verir
+            driver.getWindowHandles() ==> ise acik olan iki sayfanin window handle degerlerini getirir
+                                          
+            bir foreach loop yardimi ile set'deki 2 whd'ni
+            ilk sayfanin whd ile karsilastiracagiz
+            ilk sayfanin whd'ne ESIT OLMAYANI, ikinciSayfaWhd olarak atayacagiz
+         */
+
+        for (String each : whdSeti
+             ) {
+            if (!each.equals(ilkSayfaWhd)){
+                ikinciSayfaWhd = each;
+            }
+        }
+        System.out.println("ilk sayfa : "+ilkSayfaWhd);
+        System.out.println("ikinci sayfa : "+ikinciSayfaWhd);
+
+
+        //● Acilan yeni pencerenin sayfa başlığının (title) “New Window” oldugunu dogrulayin.
+        driver.switchTo().window(ikinciSayfaWhd);
+        String expectedIkinciSayfaTitle= "New Window";
+        String actualIkinciSayfaTitle = driver.getTitle();
+        Assert.assertEquals(expectedIkinciSayfaTitle,actualIkinciSayfaTitle);
+
+        //● Sayfadaki textin “New Window” olduğunu doğrulayın.
+        WebElement newWindowYaziElementi= driver.findElement(By.tagName("h3"));
+        String expectedIkinciSayfaYazi = "New Window";
+        String actualIkinciSayfaYazi = newWindowYaziElementi.getText();
+        Assert.assertEquals(expectedIkinciSayfaYazi,actualIkinciSayfaYazi);
+        //● Bir önceki pencereye geri döndükten sonra
+        //  sayfa başlığının “The Internet” olduğunu doğrulayın.
+
+        driver.switchTo().window(ilkSayfaWhd);
+        String expectedIlksayfaTitle = "The Internet";
+        String actualIlkSayfaTitle = driver.getTitle();
+        Assert.assertEquals(expectedIlksayfaTitle,actualIlkSayfaTitle);
+
+
+
+ //●test only "a" case
+test runner-tags"a"
+
+
