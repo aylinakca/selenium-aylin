@@ -1,0 +1,117 @@
+
+
+WebDriver driver = new ChromeDriver(); // Open Chrome
+driver.get("https://www.aaa.com"); // Navigate to URL
+driver.quit(); // Close all browser windows
+driver.close(); // Close the current browser window
+
+
+
+
+driver.findElement(By.id("username")).sendKeys("testuser"); // Enter text
+driver.findElement(By.name("submit")).click(); // Click a button
+driver.findElement(By.linkText("Home")).click(); // Click a link
+driver.findElement(By.xpath("//div[@class='message']")).getText(); // Get text
+
+
+
+
+driver.navigate().to("https://www.amazon.com"); // Navigate to a new URL
+driver.navigate().back(); // Go back to the previous page
+driver.navigate().forward(); // Go forward to the next page
+driver.navigate().refresh(); // Refresh the current page
+
+
+
+driver.switchTo().window("windowName"); // Switch to a specific window
+driver.switchTo().frame("frameId"); // Switch to a frame
+driver.switchTo().defaultContent(); // Switch back to the main content
+
+
+
+
+
+driver.manage().window().maximize(); // Maximize the browser window
+driver.manage().window().fullscreen(); // Set full-screen mode
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // Set
+implicit wait
+
+
+
+Actions actions = new Actions(driver);
+actions.moveToElement(element).click().build().perform(); // Move to and click
+actions.doubleClick(element).perform(); // Double-click
+actions.dragAndDrop(source, target).perform(); // Drag and drop
+actions.sendKeys(element, "text").perform(); // Send keystrokes
+
+
+
+Assert.assertTrue(element.isDisplayed()); // Assert element visibility
+Assert.assertEquals(driver.getTitle(), "Expected Title"); // Assert title
+
+
+
+
+WebDriverWait wait = new WebDriverWait(driver, 10);
+wait.until(ExpectedConditions.elementToBeClickable(element)); // Explicit wait
+
+
+
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+
+driver.getTitle(); // Get the page title
+driver.getCurrentUrl(); // Get the current URL
+driver.getPageSource(); // Get the entire page source code
+
+
+
+element.isDisplayed(); // Check if an element is visible
+element.isEnabled(); // Check if an element is enabled
+element.isSelected(); // Check if an element is selected
+element.getAttribute("attribute_name"); // Get an element's attribute value
+element.getTagName(); // Get an element's tag name
+
+
+Select select = new Select(element); // Create a Select object for dropdowns
+select.selectByIndex(1); // Select an option by index
+select.selectByValue("option2"); // Select an option by value
+select.selectByVisibleText("Option 3"); // Select an option by visible text
+
+
+
+actions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perfor
+m(); // Ctrl+A
+
+actions.keyDown(Keys.SHIFT).sendKeys("hello").keyUp(Keys.SHIFT).perform(); //
+Type "HELLO"
+actions.sendKeys(Keys.ENTER).perform(); // Press Enter
+
+
+actions.contextClick(element).perform(); // Right-click
+actions.clickAndHold(element).perform(); // Click and hold
+actions.release(element).perform(); // Release the mouse button
+
+
+File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+
+JavascriptExecutor js = (JavascriptExecutor)driver;
+js.executeScript("window.scrollTo(0, 1000)");
+
+Actions actions = new Actions(driver);
+// Scroll down a specific distance:
+actions.moveToElement(element).clickAndHold().moveByOffset(0,500).release().build().perform();
+
+
+Get all cookies: Set<Cookie> cookies = driver.manage().getCookies();
+Get a specific cookie: Cookie cookie =
+driver.manage().getCookieNamed("cookie_name");
+Add a cookie: driver.manage().addCookie(new Cookie("cookie_name",
+"cookie_value"));
+Delete a cookie: driver.manage().deleteCookieNamed("cookie_name");
+Delete all cookies: driver.manage().deleteAllCookies();
+
+Using sendKeys() for file uploads:
+WebElement uploadElement = driver.findElement(By.id("upload"));
+uploadElement.sendKeys("C:\\path\\to\\file.txt");
