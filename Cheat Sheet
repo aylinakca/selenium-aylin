@@ -8,7 +8,7 @@ driver.close(); // Close the current browser window
 
 
 
-driver.findElement(By.id("username")).sendKeys("testuser"); // Enter text
+driver.findElement(By.id("username")).sendKeys("aylin"); // Enter text
 driver.findElement(By.name("submit")).click(); // Click a button
 driver.findElement(By.linkText("Home")).click(); // Click a link
 driver.findElement(By.xpath("//div[@class='message']")).getText(); // Get text
